@@ -1,0 +1,5 @@
+{
+  "pyright.disableOrganizeImports": true,
+  "inlayHint.enable": false
+}
+

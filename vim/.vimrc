@@ -45,11 +45,12 @@ nnoremap <leader>b :Buffers<CR>
 " Rainbow parentheses
 let g:rainbow_active = 1
 
-" Set autocomplete menu background to very dark grey and text color
+" Set autocomplete menu background 
 highlight Pmenu ctermbg=black ctermfg=white guibg=#1c1c1c guifg=#ffffff
 highlight PmenuSel ctermbg=gray ctermfg=black guibg=#444444 guifg=#ffffff
 
-" Optional: Remove or create these files if needed
-" source ~/.vim/options.vim
-" source ~/.vim/mappings.vim
+highlight CocFloating ctermbg=black ctermfg=white guibg=#1c1c1c guifg=#ffffff
+highlight CocFloatingSel ctermbg=gray ctermfg=black guibg=#444444 guifg=#ffffff
+highlight CocFloatingDiagnostics ctermbg=black ctermfg=white guibg=#1c1c1c guifg=#ffffff
+highlight CocInlayHint ctermbg=black ctermfg=white guibg=#1c1c1c guifg=#ffffff
 

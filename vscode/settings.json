@@ -1,0 +1,129 @@
+{
+    "remote.SSH.remotePlatform": {
+        "10.1.110.225": "linux",
+        "192.168.0.128": "linux",
+        "harvirp.ddns.net": "linux",
+        "Ripper": "linux"
+    },
+    "git.autofetch": true,
+    "remote.autoForwardPortsSource": "hybrid",
+    "workbench.startupEditor": "newUntitledFile",
+    "editor.fontLigatures": null,
+    "explorer.confirmDelete": false,
+    "explorer.confirmDragAndDrop": false,
+    "extensions.ignoreRecommendations": false,
+    "workbench.editorAssociations": {
+        "*.ipynb": "jupyter.notebook.ipynb"
+    },
+    "security.workspace.trust.untrustedFiles": "open",
+    "diffEditor.renderSideBySide": false,
+    "diffEditor.ignoreTrimWhitespace": false,
+    "[python]": {
+        "editor.defaultFormatter": "charliermarsh.ruff",
+        "editor.formatOnType": true,
+        "editor.formatOnSave": false,
+        "editor.codeActionsOnSave": {
+            "source.organizeImports": "explicit",
+            "source.fixAll": "never"
+        }
+    },
+    "ruff.format.args": ["--line-length=102"],
+    "editor.inlineSuggest.enabled": true,
+    "Lua.telemetry.enable": true,
+    "editor.accessibilitySupport": "off",
+    "github.copilot.enable": {
+        "*": true,
+        "plaintext": true,
+        "scminput": false,
+        "yaml": false,
+        "sqlite": false,
+        "markdown": true
+    },
+    "git.openRepositoryInParentFolders": "never",
+    "git.enableSmartCommit": true,
+    "editor.minimap.enabled": false,
+    "github.copilot.advanced": {},
+    "redhat.telemetry.enabled": false,
+    "dvc.doNotRecommendRedHatExtension": true,
+    "editor.cursorBlinking": "solid",
+    "editor.fontFamily": "'JetBrains Mono', 'SF Mono', 'Courier New', monospace",
+    "workbench.editor.empty.hint": "hidden",
+    "vim.overrideCopy": true,
+    "files.autoSave": "onFocusChange",
+    "terminal.integrated.enableMultiLinePasteWarning": false,
+    "github.copilot.editor.enableAutoCompletions": true,
+    "vim.cursorStylePerMode.normal": "block",
+    "vim.cursorStylePerMode.visual": "block",
+    "vim.replaceWithRegister": true,
+    "go.lintOnSave": "off",
+    "go.vetOnSave": "off",
+    "draw.folder.structure.exclude": [
+        ".pytest_cache",
+        "__pycache__",
+        "",
+        "node_modules",
+        ".git",
+        "dist",
+        ".next",
+        "out"
+    ],
+    "workbench.tree.enableStickyScroll": false,
+    "explorer.autoReveal": false,
+    "haskell.manageHLS": "GHCup",
+    "dvc.doNotShowCliUnavailable": true,
+    "terminal.integrated.commandsToSkipShell": [
+        "language-julia.interrupt"
+    ],
+    "julia.symbolCacheDownload": true,
+    "julia.enableTelemetry": false,
+    "indenticator.inner.showHover": false,
+    "editor.renderWhitespace": "all",
+    "terminal.integrated.gpuAcceleration": "on",
+    "editor.fontSize": 15,
+    "files.eol": "\n",
+    "files.trimFinalNewlines": true,
+    "files.insertFinalNewline": true,
+    "terminal.integrated.fontSize": 13,
+    "dvc.doNotShowSetupAfterInstall": true,
+    "git.closeDiffOnOperation": true,
+    "vim.statusBarColorControl": true,
+    "workbench.colorCustomizations": {
+        "statusBar.background": "#0078d4",
+        "statusBar.noFolderBackground": "#0078d4",
+        "statusBar.debuggingBackground": "#0078d4",
+        "statusBar.foreground": "#ffffff",
+        "statusBar.debuggingForeground": "#ffffff",
+        "activityBar.background": "#1e1e2e",
+        "editor.background": "#1e1e2e",
+        "terminal.background": "#1e1e2e",
+        "sideBar.background": "#1e1e2e",
+        "editorGutter.background": "#24283a",
+        "terminal.border": "#24283a",
+        "tab.activeBorder": "#24283a",
+        "panel.background": "#24283a"
+    },
+    "vim.statusBarColors.insert": "#e23bff",
+    "vim.statusBarColors.normal": "#0078d4",
+    "vim.statusBarColors.visual": "#a3b8ef",
+    "vim.statusBarColors.visualline": "#a3b8ef",
+    "vim.statusBarColors.searchinprogressmode": "#3fbf88",
+    "git.confirmSync": false,
+    "[typescript]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "cSpell.dictionaries": [
+        "python"
+    ],
+    "workbench.preferredLightColorTheme": "Catppuccin Frappé",
+    "workbench.preferredHighContrastLightColorTheme": "Catppuccin Frappé",
+    "window.autoDetectHighContrast": false,
+    "workbench.settings.applyToAllProfiles": [
+        "workbench.colorTheme"
+    ],
+    "window.autoDetectColorScheme": true,
+    "C_Cpp.intelliSenseEngineFallback": "enabled",
+    "diffEditor.hideUnchangedRegions.enabled": true,
+    "[markdown]": {
+        "diffEditor.ignoreTrimWhitespace": false
+    },
+}

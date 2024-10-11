@@ -59,7 +59,7 @@ ZSH_THEME="powerlevel10k/powerlevel10k"
 
 # Standard plugins can be found in $ZSH/plugins/
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
-plugins=(git zsh-autosuggestions web-search zsh-completions)
+plugins=(git zsh-autosuggestions web-search zsh-completions copyfile)
 source $ZSH/oh-my-zsh.sh
 
 # User configuration
@@ -87,7 +87,7 @@ source $ZSH/oh-my-zsh.sh
 # For a full list of active aliases, run `alias`.
 #
 alias code='open /Applications/Visual\ Studio\ Code.app'
-
+alias cpf='copyfile'
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh

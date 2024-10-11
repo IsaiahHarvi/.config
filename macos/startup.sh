@@ -3,13 +3,8 @@
 defaults write com.apple.finder AppleShowAllFiles TRUE ; killall Finder
 defaults write -g ApplePressAndHoldEnabled -bool false
 
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 
-if [ ! -d "$HOME/.oh-my-zsh" ]; then
-  sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-fi
+git clone --depth=1 https://github.com/romkatv/powerlevel10k.git $ZSH/custom/themes/powerlevel10k
 
-if [ ! -d "$HOME/.oh-my-zsh/custom/themes/powerlevel10k" ]; then
-  git clone --depth=1 https://github.com/romkatv/powerlevel10k.git $ZSH/custom/themes/powerlevel10k
-fi
-
-
+git clone https://github.com/zsh-users/zsh-autosuggestions $ZSH_CUSTOM/plugins/zsh-autosuggestions

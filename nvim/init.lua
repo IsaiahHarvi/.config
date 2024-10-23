@@ -22,10 +22,14 @@ require("lazy").setup({
     import = "nvchad.plugins",
   },
   {
-    "esensar/nvim-dev-container",
-    lazy = false,
+    "catppuccin/nvim",
+    name = "catppuccin",
+    priority = 1000,
     config = function()
-      require("devcontainer").setup({})
+      require("catppuccin").setup({
+        flavour = "macchiato" -- Correct the spelling here
+      })
+      vim.cmd.colorscheme "catppuccin"
     end,
   },
   {
@@ -105,4 +109,3 @@ require "nvchad.autocmds"
 vim.schedule(function()
   require "mappings"
 end)
-

@@ -22,17 +22,6 @@ require("lazy").setup({
     import = "nvchad.plugins",
   },
   {
-    "catppuccin/nvim",
-    name = "catppuccin",
-    priority = 1000,
-    config = function()
-      require("catppuccin").setup({
-        flavour = "macchiato" -- Correct the spelling here
-      })
-      vim.cmd.colorscheme "catppuccin"
-    end,
-  },
-  {
     'nvim-telescope/telescope.nvim',
     lazy = false,
     dependencies = { 'nvim-lua/plenary.nvim' },

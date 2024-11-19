@@ -1,2 +1,5 @@
 coc/
 nvim/lazy-lock.json
+wireshark/
+.DS_Store
+htop/

@@ -3,3 +3,10 @@ nvim/lazy-lock.json
 wireshark/
 .DS_Store
 htop/
+Autodesk/
+.mono/
+NuGet/
+gtk-2.0/
+rstudio/
+stetic/
+xbuild/

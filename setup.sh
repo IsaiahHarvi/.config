@@ -19,7 +19,8 @@ CONFIG_DIR="$HOME/.config"
 FILES_TO_SYMLINK=(
   "$CONFIG_DIR/zsh/.zshrc" "$HOME/.zshrc"
   "$CONFIG_DIR/vim/.vimrc" "$HOME/.vimrc"
-  "$CONFIG_DUR/vim/.vim/coc-settings.json" "$HOME/.vim/coc-settings.json"
+  "$CONFIG_DIR/vim/.vim/coc-settings.json" "$HOME/.vim/coc-settings.json"
+  "$CONFIG_DIR/tmux/.tmux.conf" "$HOME/.tmux.conf"
 )
 
 # Iterate over the file pairs

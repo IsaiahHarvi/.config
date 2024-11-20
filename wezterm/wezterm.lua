@@ -2,7 +2,8 @@ local wezterm = require 'wezterm'
 
 
 local function in_tmux()
-  return os.getenv("TMUX") ~= nil
+  -- return os.getenv("TMUX") ~= nil
+  return true; -- the env var doesnt work idky 
 end
 
 return {

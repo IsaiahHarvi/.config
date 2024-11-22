@@ -35,7 +35,7 @@ done
 NVCHAD_PATH="$HOME/.config/nvim"
 if [ ! -d "$NVCHAD_PATH" ]; then
   echo "Installing NvChad..."
-  git clone https://github.com/NvChad/NvChad "$NVCHAD_PATH" --depth 1 && nvim
+  git clone https://github.com/NvChad/NvChad "$NVCHAD_PATH" --depth 1
   if [ $? -eq 0 ]; then
     echo "NvChad installed successfully."
   else

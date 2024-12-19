@@ -31,21 +31,6 @@ for ((i=0; i<${#FILES_TO_SYMLINK[@]}; i+=2)); do
 done
 
 
-# NVIM Setup
-NVCHAD_PATH="$HOME/.config/nvim"
-if [ ! -d "$NVCHAD_PATH" ]; then
-  echo "Installing NvChad..."
-  git clone https://github.com/NvChad/NvChad "$NVCHAD_PATH" --depth 1
-  if [ $? -eq 0 ]; then
-    echo "NvChad installed successfully."
-  else
-    echo "Failed to install NvChad."
-    exit 1
-  fi
-else
-  echo "NvChad is already installed."
-fi
-
 # VIM Setup
 PLUG_PATH="$HOME/.vim/autoload/plug.vim"
 

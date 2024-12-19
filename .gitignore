@@ -6,7 +6,7 @@ htop/
 Autodesk/
 .mono/
 NuGet/
-gtk-2.0/
+gtk-*/
 rstudio/
 stetic/
 xbuild/

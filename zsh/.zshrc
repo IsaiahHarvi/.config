@@ -10,11 +10,11 @@ fi
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:$HOME/.local/bin:/usr/local/bin:$PATH
 export PATH="$PATH:/Users/iharville/Library/Python/3.11/bin"
-
-# Path to Oh My Zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
-
 export PATH=$PATH:/Applications/Wireshark.app/Contents/MacOS/
+export PATH=/opt/local/bin:$PATH
+export EDITOR="nvim"
+export VISUAL="nvim"
 
 ZSH_THEME="powerlevel10k/powerlevel10k"
 
@@ -27,11 +27,11 @@ ZSH_THEME="powerlevel10k/powerlevel10k"
 
 # Uncomment one of the following lines to change the auto-update behavior
 # zstyle ':omz:update' mode disabled  # disable automatic updates
-# zstyle ':omz:update' mode auto      # update automatically without asking
+zstyle ':omz:update' mode auto      # update automatically without asking
 # zstyle ':omz:update' mode reminder  # just remind me to update when it's time
 
 # Uncomment the following line to change how often to auto-update (in days).
-# zstyle ':omz:update' frequency 13
+zstyle ':omz:update' frequency 30 
 
 # Uncomment the following line if pasting URLs and other text is messed up.
 # DISABLE_MAGIC_FUNCTIONS="true"
@@ -43,7 +43,7 @@ ZSH_THEME="powerlevel10k/powerlevel10k"
 # DISABLE_AUTO_TITLE="true"
 
 # Uncomment the following line to enable command auto-correction.
-# ENABLE_CORRECTION="true"
+ENABLE_CORRECTION="true"
 
 # Uncomment the following line to display red dots whilst waiting for completion.
 # You can also set it to another string to have that shown instead of the default red dots.
@@ -90,11 +90,9 @@ source $ZSH/oh-my-zsh.sh
 #
 alias code='open /Applications/Visual\ Studio\ Code.app'
 alias cpf='copyfile'
-alias luamake="/Users/iharville/luamake/luamake" # macOS thing
+alias luamake="/Users/iharville/luamake/luamake"
 alias ports='port'
+alias gc='gnuradio-companion'
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
-
-
-

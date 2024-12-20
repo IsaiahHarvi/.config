@@ -10,10 +10,10 @@ local config = {
   font_size = 13.0,
   color_scheme = 'Catppuccin Macchiato', -- mocha, frappe, latte
   window_background_opacity = 0.93,
-  window_background_gradient = {
-    colors = { "#1e3a5f", "#283046" },
-    orientation = 'Vertical',
-  },
+  -- window_background_gradient = {
+    -- colors = { "#1e3a5f", "#283046" },
+    -- orientation = 'Vertical',
+  -- },
   hide_tab_bar_if_only_one_tab = true,
   enable_scroll_bar = true,
 }

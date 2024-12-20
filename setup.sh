@@ -6,11 +6,16 @@ create_symlink() {
   local link_name="$2"
 
   if [ -e "$link_name" ]; then
-    echo "Skipping: $link_name already exists."
-  else
-    ln -s "$target" "$link_name"
-    echo "Created symlink: $link_name -> $target"
+    if [ -L "$link_name" ]; then
+      echo "Skipping: $link_name already exists."
+    else
+      echo "Backing up existing file: $link_name"
+      mv "$link_name" "${link_name}.backup"
+    fi
   fi
+
+  ln -s "$target" "$link_name"
+  echo "Created symlink: $link_name -> $target"
 }
 
 CONFIG_DIR="$HOME/.config"

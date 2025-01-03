@@ -16,6 +16,10 @@ export PATH=/opt/local/bin:$PATH
 export EDITOR="nvim"
 export VISUAL="nvim"
 
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
+
 ZSH_THEME="powerlevel10k/powerlevel10k"
 
 # Uncomment the following line to use case-sensitive completion.
@@ -87,4 +91,8 @@ alias gc='gnuradio-companion'
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
+
+# bun completions
+[ -s "/Users/iharville/.bun/_bun" ] && source "/Users/iharville/.bun/_bun"
 

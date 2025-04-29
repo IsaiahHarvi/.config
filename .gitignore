@@ -10,3 +10,5 @@ gtk-*/
 rstudio/
 stetic/
 xbuild/
+uv/
+fish/

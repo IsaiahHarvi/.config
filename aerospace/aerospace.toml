@@ -1,8 +1,9 @@
-# Available commands: https://nikitabobko.github.io/AeroSpace/commands
 after-login-command = []
 
 # 'after-startup-command' is run after 'after-login-command'
-after-startup-command = []
+after-startup-command = [
+    "exec-and-forget /bin/bash -lc \"/opt/homebrew/bin/sketchybar --load /Users/iharville/.config/sketchybar/sketchybarrc\"",
+]
 
 # Start AeroSpace at login
 start-at-login = true
@@ -48,17 +49,16 @@ automatically-unhide-macos-hidden-apps = true
 [gaps]
     inner.horizontal = 3
     inner.vertical =   3
-    outer.left =       0
-    outer.bottom =     0
-    outer.top =        0
-    outer.right =      0
+    outer.left =       5
+    outer.bottom =     5
+    outer.top =        [ { monitor.main = 35 }, 5 ]
+    outer.right =      5
 
 # 'main' binding mode declaration
 # See: https://nikitabobko.github.io/AeroSpace/guide#binding-modes
 # 'main' binding mode must be always presented
 # Fallback value (if you omit the key): mode.main.binding = {}
 [mode.main.binding]
-
     # All possible keys:
     # - Letters.        a, b, c, ..., z
     # - Numbers.        0, 1, 2, ..., 9
@@ -207,4 +207,9 @@ automatically-unhide-macos-hidden-apps = true
     # alt-shift-j = ['join-with down', 'mode main']
     # alt-shift-k = ['join-with up', 'mode main']
     # alt-shift-l = ['join-with right', 'mode main']
-    #
+
+
+[[on-window-detected]]
+# Ignore
+if.app-id = 'com.jamfsoftware.selfservice.mac'
+run = ['layout floating']

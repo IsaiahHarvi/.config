@@ -2,6 +2,7 @@
 export PATH="$PATH:/Users/iharville/Library/Python/3.11/bin"
 export PATH="$PATH:/Applications/Wireshark.app/Contents/MacOS/"
 export PATH="/opt/local/bin:$PATH"
+export PATH="$HOME:/.local/bin:$PATH"
 export EDITOR="nvim"
 export VISUAL="nvim"
 
@@ -15,6 +16,8 @@ alias cpf='copyfile'
 alias luamake="/Users/iharville/luamake/luamake"
 alias ports='port'
 alias gc='gnuradio-companion'
+alias vim='nvim'
+alias vimm='vim'
 
 # Starship
 eval "$(starship init zsh)"
@@ -40,3 +43,11 @@ zinit light-mode for \
     zdharma-continuum/zinit-annex-patch-dl \
     zdharma-continuum/zinit-annex-rust
 
+
+# Zinit Plugin Manager Setup
+export ZINIT_HOME="/Users/iharville/.zinit"
+source "/Users/iharville/.zinit/zinit.zsh"
+
+# Load plugins
+zinit light zsh-users/zsh-autosuggestions
+zinit light zsh-users/zsh-completions

@@ -95,4 +95,6 @@ zinit light zsh-users/zsh-completions
 EOF
 
 
+echo "Don't forget about Aerospace"
+
 echo "Setup complete. Please restart your shell to apply changes."

@@ -25,8 +25,6 @@ config = {
                 hue = 1.0,
                 saturation = 1.02,
                 brightness = 0.25,
-                width = "100%",
-                height = "100%"
             },
         },
         {

@@ -26,6 +26,7 @@ FILES=(
   "$CONFIG_DIR/vim/.vimrc" "$HOME/.vimrc"
   "$CONFIG_DIR/vim/.vim/coc-settings.json" "$HOME/.vim/coc-settings.json"
   "$CONFIG_DIR/tmux/.tmux.conf" "$HOME/.tmux.conf"
+  "$CONFIG_DIR/pmy" "$HOME/.pmy"
 )
 
 for ((i=0; i<${#FILES[@]}; i+=2)); do
@@ -95,6 +96,6 @@ zinit light zsh-users/zsh-completions
 EOF
 
 
-echo "Don't forget about Aerospace"
+echo -e "\nDon't forget to install Aerospace and PMY.\n"
 
 echo "Setup complete. Please restart your shell to apply changes."

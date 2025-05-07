@@ -1,4 +1,6 @@
 format = """
+$username\
+$hostname\
 $directory\
 $git_branch\
 $git_status\
@@ -87,10 +89,18 @@ style = 'red'
 number_threshold = 1
 format = '[$symbol]($style)'
 
-[cmd_duration]
-min_time = 500
-style = 'fg:gray'
-format = '[$duration]($style)'
+
+[username]
+style = "bold dimmed white"
+format = "[$user]($style)@"
+disabled = false
+show_always = true
+
+[hostname]
+ssh_only = false
+style    = "bold dimmed white"
+format   = "[$hostname]($style) "
+disabled = false
 
 [palettes.onedark]
 dark_blue='#61afef'

@@ -22,6 +22,13 @@ alias code='open /Applications/Visual\ Studio\ Code.app'
 # Starship
 eval "$(starship init zsh)"
 
+# pmy
+export PMY_TRIGGER_KEY='^I'
+eval "$(pmy init)"
+
+# fzf
+export FZF_DEFAULT_OPTS='--height 40% --tmux bottom --layout reverse --border top'
+
 # Fuzzy find open for mac
 if [[ "$OSTYPE" == darwin* ]]; then
     open() {
@@ -65,15 +72,12 @@ if [[ "$OSTYPE" == darwin* ]]; then
 fi
 
 ## Zinit Setup
-export ZINIT_HOME="$HOME/.zinit"
-source "$HOME/.zinit/zinit.zsh"
-
 ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git"
 [ ! -d $ZINIT_HOME ] && mkdir -p "$(dirname $ZINIT_HOME)"
 [ ! -d $ZINIT_HOME/.git ] && git clone https://github.com/zdharma-continuum/zinit.git "$ZINIT_HOME"
 source "${ZINIT_HOME}/zinit.zsh"
 
-# Plugins
+# Load Plugins
 zinit light zsh-users/zsh-autosuggestions
 zinit light zsh-users/zsh-completions
 
@@ -84,13 +88,4 @@ zinit light-mode for \
     zdharma-continuum/zinit-annex-bin-gem-node \
     zdharma-continuum/zinit-annex-patch-dl \
     zdharma-continuum/zinit-annex-rust
-
-
-# Zinit Plugin Manager Setup
-export ZINIT_HOME="/Users/iharville/.zinit"
-source "/Users/iharville/.zinit/zinit.zsh"
-
-# Load plugins
-zinit light zsh-users/zsh-autosuggestions
-zinit light zsh-users/zsh-completions
 

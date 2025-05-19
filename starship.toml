@@ -89,9 +89,8 @@ style = 'red'
 number_threshold = 1
 format = '[$symbol]($style)'
 
-
 [username]
-style = "bold dimmed white"
+# style = "bold bright-blue"
 format = "[$user]($style)@"
 disabled = false
 show_always = true

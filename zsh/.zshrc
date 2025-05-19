@@ -1,8 +1,10 @@
-# exports
-export PATH="$PATH:/Users/iharville/Library/Python/3.11/bin"
-export PATH="$PATH:/Applications/Wireshark.app/Contents/MacOS/"
-export PATH="/opt/local/bin:$PATH"
-export PATH="$HOME:/.local/bin:$PATH"
+export PATH="/opt/local/libexec/llvm-8.0/bin:$PATH" # LLVM
+export PATH="/opt/local/bin:/opt/local/sbin:$PATH"  # MacPorts
+
+export PATH="$HOME/.local/bin:$HOME/Library/Python/3.11/bin:$PATH"
+
+export PATH="/Applications/Wireshark.app/Contents/MacOS:$PATH" # WireShark CLI
+
 export EDITOR="nvim"
 export VISUAL="nvim"
 

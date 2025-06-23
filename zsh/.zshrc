@@ -15,6 +15,11 @@ export PATH="$BUN_INSTALL/bin:$PATH"
 alias cpf='copyfile'
 alias luamake="/Users/iharville/luamake/luamake" # mac specific
 alias gc='gnuradio-companion'
+alias gd='git diff .'
+alias gf='git fetch'
+alias gs='git status'
+alias gc='git checkout'
+alias ga='git add .'
 
 # Starship
 eval "$(starship init zsh)"
@@ -69,12 +74,18 @@ if [[ "$OSTYPE" == darwin* ]]; then
 fi
 
 # Zinit
-export ZINIT_HOME="$ZINIT_HOME"
+ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git"
+[ ! -d $ZINIT_HOME ] && mkdir -p "$(dirname $ZINIT_HOME)"
+[ ! -d $ZINIT_HOME/.git ] && git clone https://github.com/zdharma-continuum/zinit.git "$ZINIT_HOME"
 source "${ZINIT_HOME}/zinit.zsh"
+autoload -Uz _zinit
+(( ${+_comps} )) && _comps[zinit]=_zinit
 
 # Load Plugins
 zinit light zsh-users/zsh-autosuggestions
 zinit light zsh-users/zsh-completions
+zinit light zsh-users/zsh-syntax-highlighting
+zinit light MichaelAquilina/zsh-you-should-use
 
 # Load a few important annexes, without Turbo
 # (this is currently required for annexes)
@@ -83,5 +94,7 @@ zinit light-mode for \
     zdharma-continuum/zinit-annex-bin-gem-node \
     zdharma-continuum/zinit-annex-patch-dl \
     zdharma-continuum/zinit-annex-rust
+
+autoload -Uz compinit && compinit
 
 #### END OF VERSIONED CONFIG

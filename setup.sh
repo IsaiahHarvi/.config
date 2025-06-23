@@ -59,20 +59,22 @@ fi
 if ! command -v zinit &>/dev/null; then
   echo "Installing Zinit..."
   bash -c "$(curl -fsSL https://raw.githubusercontent.com/zdharma-continuum/zinit/main/scripts/install.sh)" -- --unattended -y
-  source ~/.zshrc
-  zinit self-update
 else
   echo "Zinit already installed."
 fi
 
 # PMY
-if ! command -v go &>/dev/null; then
-    echo "Error: Go not found in PATH. To install PMY, install Go first." >&2
-else
+if ! command -v pmy &>/dev/null; then
+    if ! command -v go &>/dev/null; then
+        echo "Error: Go not found in PATH. To install PMY, install Go first." >&2
+    fi
     if [[ "$(uname -s)" == "Darwin" ]]; then
-      sudo env GOBIN=/usr/local/bin go install github.com/relastle/pmy@latest
+        sudo env GOBIN=/usr/local/bin go install github.com/relastle/pmy@latest
     else
         echo "Install PMY (https://github.com/relastle/pmy) for fzf completion"
+    fi
+fi
 
-source ~/.zshrc
+echo "Reload zsh."
 
+exit 0

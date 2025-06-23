@@ -12,4 +12,8 @@
 </div>
 <br>
 
-`git clone git@github.com:IsaiahHarvi/.config.git ~/.config --force && sudo chmod +x ~/.config/setup.sh && ~/.config/setup.sh`
+```bash
+git clone git@github.com:IsaiahHarvi/.config.git ~/.config --force
+sudo chmod +x ~/.config/setup.sh
+bash ~/.config/setup.sh
+```

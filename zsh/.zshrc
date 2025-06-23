@@ -1,8 +1,7 @@
+# Mac Specific
 export PATH="/opt/local/libexec/llvm-8.0/bin:$PATH" # LLVM
 export PATH="/opt/local/bin:/opt/local/sbin:$PATH"  # MacPorts
-
-export PATH="$HOME/.local/bin:$HOME/Library/Python/3.11/bin:$PATH"
-
+export PATH="$HOME/.local/bin:$HOME/Library/Python/3.11/bin:$PATH"  # Python idky
 export PATH="/Applications/Wireshark.app/Contents/MacOS:$PATH" # WireShark CLI
 
 export EDITOR="nvim"
@@ -14,12 +13,8 @@ export PATH="$BUN_INSTALL/bin:$PATH"
 
 # aliases
 alias cpf='copyfile'
-alias luamake="/Users/iharville/luamake/luamake"
-alias ports='port'
+alias luamake="/Users/iharville/luamake/luamake" # mac specific
 alias gc='gnuradio-companion'
-alias vim='nvim'
-alias vimm='vim'
-alias code='open /Applications/Visual\ Studio\ Code.app'
 
 # Starship
 eval "$(starship init zsh)"
@@ -31,7 +26,7 @@ eval "$(pmy init)"
 # fzf
 export FZF_DEFAULT_OPTS='--height 40% --tmux bottom --layout reverse --border top'
 
-# Fuzzy find open for mac
+# Mac specific, open w/ fzf
 if [[ "$OSTYPE" == darwin* ]]; then
     open() {
       if [[ $# -eq 1 && $1 != -* ]]; then
@@ -73,10 +68,8 @@ if [[ "$OSTYPE" == darwin* ]]; then
     }
 fi
 
-## Zinit Setup
-ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git"
-[ ! -d $ZINIT_HOME ] && mkdir -p "$(dirname $ZINIT_HOME)"
-[ ! -d $ZINIT_HOME/.git ] && git clone https://github.com/zdharma-continuum/zinit.git "$ZINIT_HOME"
+# Zinit
+export ZINIT_HOME="$ZINIT_HOME"
 source "${ZINIT_HOME}/zinit.zsh"
 
 # Load Plugins
@@ -91,3 +84,4 @@ zinit light-mode for \
     zdharma-continuum/zinit-annex-patch-dl \
     zdharma-continuum/zinit-annex-rust
 
+#### END OF VERSIONED CONFIG

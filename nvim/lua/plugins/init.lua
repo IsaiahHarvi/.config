@@ -3,20 +3,30 @@ local plugins = {
   { "hrsh7th/nvim-cmp" },
   { "nvim-treesitter/nvim-treesitter" },
   {
-    "scottmckendry/cyberdream.nvim",
+    'AlexvZyl/nordic.nvim',
+    name = "nordic",
     lazy = false,
     priority = 100,
     config = function()
-        require("cyberdream").setup({
-            variant = "default",
-            transparent = true,
-            borderless_pickers = false,
-            italic_comments = false,
-            saturation = 0.75
+        require('nordic').setup({
+            transparent = { bg = true, float = true},
         })
-        vim.cmd.colorscheme("cyberdream")
+        vim.cmd.colorscheme("nordic")
     end,
-  },
+  --   "scottmckendry/cyberdream.nvim",
+  --   lazy = false,
+  --   priority = 100,
+  --   config = function()
+  --       require("cyberdream").setup({
+  --           variant = "default",
+  --           transparent = true,
+  --           borderless_pickers = false,
+  --           italic_comments = false,
+  --           saturation = 0.75
+  --       })
+  --       vim.cmd.colorscheme("cyberdream")
+  --   end,
+  --
     -- "catppuccin/nvim",
     -- name = "catppuccin",
     -- config = function()
@@ -31,6 +41,7 @@ local plugins = {
     --   })
     --   vim.cmd.colorscheme("catppuccin")
     -- end,
+  },
 }
 
 local plugin_modules = { "cmp", "lsp", "treesitter", "telescope" }

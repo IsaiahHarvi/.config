@@ -51,7 +51,6 @@ else
   echo "Starship already installed."
 fi
 
-# Ensure Starship init in .zshrc
 if ! grep -Fxq 'eval "$(starship init zsh)"' "$HOME/.zshrc"; then
   echo 'eval "$(starship init zsh)"' >> "$HOME/.zshrc"
 fi
@@ -60,42 +59,20 @@ fi
 if ! command -v zinit &>/dev/null; then
   echo "Installing Zinit..."
   bash -c "$(curl -fsSL https://raw.githubusercontent.com/zdharma-continuum/zinit/main/scripts/install.sh)" -- --unattended -y
+  source ~/.zshrc
+  zinit self-update
 else
   echo "Zinit already installed."
 fi
 
-# Determine ZINIT_HOME (prefer ~/.zinit, fallback to XDG)
-ZINIT_HOME="$HOME/.zinit"
-if [ ! -d "$ZINIT_HOME" ]; then
-  XDG_PATH="${XDG_DATA_HOME:-$HOME/.local/share}/zinit"
-  if [ -d "$XDG_PATH" ]; then
-    ZINIT_HOME="$XDG_PATH"
-  else
-    echo "Error: cannot locate zinit directory" >&2
-    exit 1
-  fi
-fi
-
-# Remove any existing zinit entries from .zshrc
-if [[ "$(uname)" == "Darwin" ]]; then
-  sed -i '' '/zinit/d' "$HOME/.zshrc"
+# PMY
+if ! command -v go &>/dev/null; then
+    echo "Error: Go not found in PATH. To install PMY, install Go first." >&2
 else
-  sed -i '/zinit/d' "$HOME/.zshrc"
-fi
+    if [[ "$(uname -s)" == "Darwin" ]]; then
+      sudo env GOBIN=/usr/local/bin go install github.com/relastle/pmy@latest
+    else
+        echo "Install PMY (https://github.com/relastle/pmy) for fzf completion"
 
-# Append proper zinit setup to .zshrc (variables expanded at install time)
-cat << EOF >> "$HOME/.zshrc"
+source ~/.zshrc
 
-# Zinit Plugin Manager Setup
-export ZINIT_HOME="$ZINIT_HOME"
-source "$ZINIT_HOME/zinit.zsh"
-
-# Load plugins
-zinit light zsh-users/zsh-autosuggestions
-zinit light zsh-users/zsh-completions
-EOF
-
-
-echo -e "\nDon't forget to install Aerospace and PMY.\n"
-
-echo "Setup complete. Please restart your shell to apply changes."

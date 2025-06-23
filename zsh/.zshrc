@@ -19,6 +19,7 @@ alias gd='git diff .'
 alias gf='git fetch'
 alias gs='git status'
 alias gc='git checkout'
+alias gcm='git commit -m'
 alias ga='git add .'
 
 # Starship

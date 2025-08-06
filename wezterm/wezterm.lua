@@ -6,7 +6,7 @@ config = {
     automatically_reload_config = true,
     enable_tab_bar = false,
     window_close_confirmation = "NeverPrompt",
-    window_decorations = "RESIZE",
+    -- window_decorations = "RESIZE",
     default_cursor_style = "SteadyBlock",
     font = wezterm.font('JetBrains Mono', { weight = "Bold" }),
     font_size = 13.0,
@@ -28,7 +28,7 @@ config = {
             },
             width = "100%",
             height = "100%",
-            opacity = 0.55
+            opacity = 0.40
         },
     },
 }

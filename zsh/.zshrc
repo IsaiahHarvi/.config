@@ -3,6 +3,9 @@ export PATH="/opt/local/libexec/llvm-8.0/bin:$PATH" # LLVM
 export PATH="/opt/local/bin:/opt/local/sbin:$PATH"  # MacPorts
 export PATH="$HOME/.local/bin:$HOME/Library/Python/3.11/bin:$PATH"  # Python idky
 export PATH="/Applications/Wireshark.app/Contents/MacOS:$PATH" # WireShark CLI
+export PATH="$HOME/.cargo/bin:$PATH"
+export PATH="$HOME/.docker/bin:$PATH"
+export PATH="/usr/local/bin:$PATH"
 
 export EDITOR="nvim"
 export VISUAL="nvim"
@@ -31,6 +34,11 @@ eval "$(pmy init)"
 
 # fzf
 export FZF_DEFAULT_OPTS='--height 40% --tmux bottom --layout reverse --border top'
+
+if [ -z "$SSH_AUTH_SOCK" ] ; then
+    eval `ssh-agent -s`
+    # ssh-add ~/.ssh/id_ed25519
+fi
 
 # Mac specific, open w/ fzf
 if [[ "$OSTYPE" == darwin* ]]; then
@@ -95,6 +103,13 @@ zinit light-mode for \
     zdharma-continuum/zinit-annex-bin-gem-node \
     zdharma-continuum/zinit-annex-patch-dl \
     zdharma-continuum/zinit-annex-rust
+
+
+# The following lines have been added by Docker Desktop to enable Docker CLI completions.
+fpath=($HOME/.docker/completions $fpath)
+# autoload -Uz compinit
+# compinit
+# End of Docker CLI completions
 
 autoload -Uz compinit && compinit
 

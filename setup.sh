@@ -27,6 +27,7 @@ FILES=(
   "$CONFIG_DIR/vim/.vim/coc-settings.json" "$HOME/.vim/coc-settings.json"
   "$CONFIG_DIR/tmux/.tmux.conf" "$HOME/.tmux.conf"
   "$CONFIG_DIR/pmy" "$HOME/.pmy"
+  "$CONFIG_DIR/treeignore" "$HOME/.treeignore"
 )
 
 for ((i=0; i<${#FILES[@]}; i+=2)); do

@@ -40,6 +40,12 @@ if [ -z "$SSH_AUTH_SOCK" ] ; then
     # ssh-add ~/.ssh/id_ed25519
 fi
 
+# Tree
+tree() {
+  local ignore=$(paste -d\| -s ~/.treeignore)
+  command tree -I "$ignore" --prune "$@"
+}
+
 # Mac specific, open w/ fzf
 if [[ "$OSTYPE" == darwin* ]]; then
     open() {

@@ -8,7 +8,7 @@ bindsym $mod+Return exec sh -c 'wezterm start --cwd "$HOME" || xterm'
 bindsym $mod+space exec dmenu_run
 
 bindsym $mod+m move scratchpad
-bindym $mod+Shift+m scratchpad show
+bindsym $mod+Shift+m scratchpad show
 
 bindsym $mod+Shift+q kill
 bindsym $mod+Shift+r restart

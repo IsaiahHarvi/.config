@@ -88,7 +88,8 @@ is_graphical_session() {
 if is_ubuntu && is_graphical_session; then
   echo "Installing i3 desktop stack..."
   sudo apt update
-  sudo apt install -y i3 i3status i3lock dmenu dunst network-manager-gnome picom feh rofi xterm xclip wl-clipboard
+  sudo apt install -y i3 i3status i3lock dmenu dunst network-manager-gnome picom \
+      feh rofi xterm xclip wl-clipboard fzf ripgrep
 else
     echo "Skipping i3 install..."
 fi

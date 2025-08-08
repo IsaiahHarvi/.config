@@ -120,3 +120,4 @@ fpath=($HOME/.docker/completions $fpath)
 autoload -Uz compinit && compinit
 
 #### END OF VERSIONED CONFIG
+

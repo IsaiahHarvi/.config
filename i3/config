@@ -1,0 +1,40 @@
+set $mod Mod4
+set $alt Mod1
+
+bindsym $mod+Return exec sh -c 'wezterm start --cwd "$HOME" || xterm'
+bindsym $mod+space exec dmenu_run
+
+bindsym $mod+Shift+q kill
+bindsym $mod+Shift+r restart
+bindsym $mod+Shift+e exit
+bindsym $mod+f fullscreen toggle
+bindsym $mod+Shift+space floating toggle
+
+bindsym $mod+Left  focus left
+bindsym $mod+Down  focus down
+bindsym $mod+Up    focus up
+bindsym $mod+Right focus right
+
+bindsym $mod+$alt+Left  move left
+bindsym $mod+$alt+Down  move down
+bindsym $mod+$alt+Up    move up
+bindsym $mod+$alt+Right move right
+
+bindsym $mod+Shift+Left  focus output left
+bindsym $mod+Shift+Right focus output right
+bindsym $mod+Shift+Down  focus output down
+
+bindsym $mod+n split v
+bindsym $mod+m split h
+
+bindsym $alt+slash layout toggle split
+bindsym $alt+comma layout stacking
+
+bindsym $mod+comma  focus parent
+bindsym $mod+period focus child
+
+bar {
+  status_command i3status
+}
+exec --no-startup-id nm-applet
+exec --no-startup-id dunst

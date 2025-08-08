@@ -1,6 +1,9 @@
 set $mod Mod4
 set $alt Mod1
 
+exec --no-startup-id picom --config ~/.config/picom/picom.conf
+exec_always --no-startup-id polybar example
+
 bindsym $mod+Return exec sh -c 'wezterm start --cwd "$HOME" || xterm'
 bindsym $mod+space exec dmenu_run
 
@@ -38,3 +41,4 @@ bar {
 }
 exec --no-startup-id nm-applet
 exec --no-startup-id dunst
+exec --no-startup-id feh --bg-fill /Users/iharville/Pictures/bg-montery.jpg

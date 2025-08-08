@@ -76,6 +76,25 @@ if ! command -v pmy &>/dev/null; then
     fi
 fi
 
+
+is_ubuntu() {
+  [ -r /etc/os-release ] && grep -q '^ID=ubuntu' /etc/os-release
+}
+
+is_graphical_session() {
+  [ -n "$DISPLAY" ] || [ -n "$WAYLAND_DISPLAY" ]
+}
+
+if is_ubuntu && is_graphical_session; then
+  echo "Installing i3 desktop stack..."
+  sudo apt update
+  sudo apt install -y i3 i3status i3lock dmenu dunst network-manager-gnome picom feh rofi xterm
+else
+    echo "Skipping i3 install..."
+fi
+
+
+
 echo "Reload zsh."
 
 exit 0

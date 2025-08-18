@@ -1,3 +1,4 @@
+
 return {
   "neovim/nvim-lspconfig",
   dependencies = {
@@ -8,13 +9,10 @@ return {
   config = function()
     require("mason").setup()
     require("mason-lspconfig").setup({
-      ensure_installed = { "rust_analyzer", "pyright" },
+      ensure_installed = { "rust_analyzer" },
     })
 
     local lspconfig = require("lspconfig")
-
-    -- Python LSP (Pyright)
-    lspconfig.pyright.setup({})
 
     -- Rust LSP with rust-tools
     require("rust-tools").setup({
@@ -38,5 +36,11 @@ return {
         },
       },
     })
+    if vim.lsp and vim.lsp.enable then
+      vim.lsp.config('ty', { settings = { ty = { diagnosticMode = "workspace" } } })
+      vim.lsp.enable('ty')
+    else
+      lspconfig.ty.setup({ settings = { ty = { diagnosticMode = "workspace" } } })
+    end
   end,
 }

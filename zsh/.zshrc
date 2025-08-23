@@ -102,20 +102,11 @@ zinit light zsh-users/zsh-completions
 zinit light zsh-users/zsh-syntax-highlighting
 zinit light MichaelAquilina/zsh-you-should-use
 
-# Load a few important annexes, without Turbo
-# (this is currently required for annexes)
 zinit light-mode for \
     zdharma-continuum/zinit-annex-as-monitor \
     zdharma-continuum/zinit-annex-bin-gem-node \
     zdharma-continuum/zinit-annex-patch-dl \
     zdharma-continuum/zinit-annex-rust
-
-
-# The following lines have been added by Docker Desktop to enable Docker CLI completions.
-fpath=($HOME/.docker/completions $fpath)
-# autoload -Uz compinit
-# compinit
-# End of Docker CLI completions
 
 autoload -Uz compinit && compinit
 

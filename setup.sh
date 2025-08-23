@@ -72,7 +72,7 @@ if ! command -v pmy &>/dev/null; then
     if [[ "$(uname -s)" == "Darwin" ]]; then
         sudo env GOBIN=/usr/local/bin go install github.com/relastle/pmy@latest
     else
-        echo "Install PMY (https://github.com/relastle/pmy) for fzf completion"
+	sudo go install github.com/relastle/pmy@latest
     fi
 fi
 

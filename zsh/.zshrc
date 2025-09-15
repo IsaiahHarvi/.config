@@ -6,6 +6,7 @@ export PATH="/Applications/Wireshark.app/Contents/MacOS:$PATH" # WireShark CLI
 export PATH="$HOME/.cargo/bin:$PATH"
 export PATH="$HOME/.docker/bin:$PATH"
 export PATH="/usr/local/bin:$PATH"
+export PATH="/usr/local/go/bin:$PATH"
 
 export EDITOR="nvim"
 export VISUAL="nvim"
@@ -13,6 +14,10 @@ export VISUAL="nvim"
 # bun (lame)
 export BUN_INSTALL="$HOME/.bun"
 export PATH="$BUN_INSTALL/bin:$PATH"
+
+# docker
+export DOCKER_BUILDKIT=1
+export COMPOSE_DOCKER_CLI_BUILD=1
 
 # aliases
 alias cpf='copyfile'
@@ -45,48 +50,6 @@ tree() {
   local ignore=$(paste -d\| -s ~/.treeignore)
   command tree -I "$ignore" --prune "$@"
 }
-
-# Mac specific, open w/ fzf
-if [[ "$OSTYPE" == darwin* ]]; then
-    open() {
-      if [[ $# -eq 1 && $1 != -* ]]; then
-        local query="$1"
-        local -a apps names
-
-        apps=()
-        while IFS= read -r -d '' app; do
-          apps+=("$app")
-        done < <(
-          find /Applications /System/Applications "$HOME/Applications" \
-            -maxdepth 2 -type d -name '*.app' -print0 2>/dev/null
-        )
-
-        # strip paths down to “AppName”
-        names=()
-        for app in "${apps[@]}"; do
-          local base=${app##*/}
-          names+=("${base%.app}")
-        done
-
-        local chosen
-        chosen=$(printf '%s\n' "${names[@]}" \
-          | fzf --filter="$query" --select-1 --exit-0)
-
-        if [[ -n $chosen ]]; then
-          for app in "${apps[@]}"; do
-            local base=${app##*/}
-            if [[ "${base%.app}" == "$chosen" ]]; then
-              command open -n "$app"
-              return
-            fi
-          done
-        fi
-      fi
-
-      # fallback
-      command open "$@"
-    }
-fi
 
 # Zinit
 ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git"

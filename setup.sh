@@ -1,5 +1,6 @@
 #!/bin/bash
 
+
 create_symlink() {
   local target="$1"
   local link_name="$2"
@@ -19,8 +20,6 @@ create_symlink() {
 }
 
 CONFIG_DIR="$HOME/.config"
-
-# Files to symlink (target -> link)
 FILES=(
   "$CONFIG_DIR/zsh/.zshrc" "$HOME/.zshrc"
   "$CONFIG_DIR/vim/.vimrc" "$HOME/.vimrc"
@@ -34,6 +33,7 @@ for ((i=0; i<${#FILES[@]}; i+=2)); do
   create_symlink "${FILES[i]}" "${FILES[i+1]}"
 done
 
+
 # Install Vim Plug if missing
 PLUG_PATH="$HOME/.vim/autoload/plug.vim"
 if [ ! -f "$PLUG_PATH" ]; then
@@ -44,7 +44,8 @@ else
   echo "Vim Plug already installed."
 fi
 
-# Install Starship prompt if missing
+
+# Install Starship if missing
 if ! command -v starship &>/dev/null; then
   echo "Installing Starship prompt..."
   curl -sS https://starship.rs/install.sh | sh -s -- --yes
@@ -86,16 +87,11 @@ is_graphical_session() {
 }
 
 if is_ubuntu && is_graphical_session; then
-  echo "Installing i3 desktop stack..."
   sudo apt update
   sudo apt install -y i3 i3status i3lock dmenu dunst network-manager-gnome picom \
       feh rofi xterm xclip wl-clipboard fzf ripgrep
 else
     echo "Skipping i3 install..."
 fi
-
-
-
-echo "Reload zsh."
 
 exit 0

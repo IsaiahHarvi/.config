@@ -14,7 +14,7 @@ config = {
     background = {
         {
             source = {
-                File = "/Users/iharville/Pictures/bg-montery.jpg",
+                File = wezterm.home_dir .. "/.config/wezterm/wezterm.bg",
             },
             hsb = {
                 hue = 1.0,

@@ -9,6 +9,7 @@ config = {
     -- window_decorations = "RESIZE",
     default_cursor_style = "SteadyBlock",
     font = wezterm.font('JetBrains Mono', { weight = "Bold" }),
+    harfbuzz_features = { "clig=0", "liga=0" },
     font_size = 13.0,
     color_scheme = 'Catppuccin Macchiato', -- mocha, frappe, latte
     background = {

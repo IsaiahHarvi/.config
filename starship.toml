@@ -13,12 +13,13 @@ $haskell\
 $rust\
 $ruby\
 $package\
-$aws\
 $docker_context\
 $jobs\
 $cmd_duration\
 $line_break\
 $character"""
+
+# $aws\ <- used to go after package
 
 add_newline = true
 palette = 'onedark'
@@ -90,7 +91,7 @@ number_threshold = 1
 format = '[$symbol]($style)'
 
 [username]
-# style = "bold bright-blue"
+style_user = "bold skyblue"
 format = "[$user]($style)@"
 disabled = false
 show_always = true
@@ -113,3 +114,4 @@ yellow='#e5c07b'
 gray='#828997'
 white ='#abb2bf'
 black='#2c323c'
+skyblue='#82c8e5'

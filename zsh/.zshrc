@@ -43,6 +43,7 @@ export FZF_DEFAULT_OPTS='--height 40% --tmux bottom --layout reverse --border to
 if [ -z "$SSH_AUTH_SOCK" ] ; then
     eval `ssh-agent -s`
     # ssh-add ~/.ssh/id_ed25519
+    # ssh-add ~/.ssh/id_rsa
 fi
 
 # Tree

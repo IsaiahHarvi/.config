@@ -24,6 +24,7 @@ alias cpf='copyfile'
 alias luamake="/Users/iharville/luamake/luamake" # mac specific
 alias gc='gnuradio-companion'
 alias gd='git diff .'
+alias gsd='git diff --staged .'
 alias gf='git fetch'
 alias gs='git status'
 alias gc='git checkout'
@@ -76,3 +77,5 @@ autoload -Uz compinit && compinit
 
 #### END OF VERSIONED CONFIG
 
+# export AWS_PROFILE=vd-admin
+# export AWS_REGION=us-east-1

@@ -1,97 +1,30 @@
-#!/bin/bash
+#!/usr/bin/env bash
+set -euo pipefail
 
+DOTFILES_ROOT="${DOTFILES_ROOT:-$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)}"
 
-create_symlink() {
-  local target="$1"
-  local link_name="$2"
-
-  if [ -e "$link_name" ]; then
-    if [ -L "$link_name" ]; then
-      echo "Skipping: $link_name already exists."
-      return
-    else
-      echo "Backing up existing file: $link_name"
-      mv "$link_name" "${link_name}.backup"
-    fi
-  fi
-
-  ln -s "$target" "$link_name"
-  echo "Created symlink: $link_name -> $target"
+normalize_os() {
+  local value="${1:-}"
+  case "$value" in
+    Darwin|darwin|mac|macos|Mac|MacOS) echo "macos" ;;
+    Linux|linux|ubuntu|Ubuntu|debian|Debian) echo "linux" ;;
+    *) echo "" ;;
+  esac
 }
 
-CONFIG_DIR="$HOME/.config"
-FILES=(
-  "$CONFIG_DIR/zsh/.zshrc" "$HOME/.zshrc"
-  "$CONFIG_DIR/vim/.vimrc" "$HOME/.vimrc"
-  "$CONFIG_DIR/vim/.vim/coc-settings.json" "$HOME/.vim/coc-settings.json"
-  "$CONFIG_DIR/tmux/.tmux.conf" "$HOME/.tmux.conf"
-  "$CONFIG_DIR/pmy" "$HOME/.pmy"
-  "$CONFIG_DIR/treeignore" "$HOME/.treeignore"
-)
+selected_os="$(normalize_os "${DOTFILES_OS:-$(uname -s)}")"
 
-for ((i=0; i<${#FILES[@]}; i+=2)); do
-  create_symlink "${FILES[i]}" "${FILES[i+1]}"
-done
-
-
-# Install Vim Plug if missing
-PLUG_PATH="$HOME/.vim/autoload/plug.vim"
-if [ ! -f "$PLUG_PATH" ]; then
-  echo "Installing Vim Plug..."
-  curl -fLo "$PLUG_PATH" --create-dirs \
-    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-else
-  echo "Vim Plug already installed."
+if [ -z "$selected_os" ]; then
+  echo "[dotfiles] Unsupported or missing OS. Set DOTFILES_OS=macos or DOTFILES_OS=linux." >&2
+  exit 1
 fi
 
+target_script="$DOTFILES_ROOT/scripts/setup-${selected_os}.sh"
 
-# Install Starship if missing
-if ! command -v starship &>/dev/null; then
-  echo "Installing Starship prompt..."
-  curl -sS https://starship.rs/install.sh | sh -s -- --yes
-else
-  echo "Starship already installed."
+if [ ! -x "$target_script" ]; then
+  echo "[dotfiles] Missing setup script for ${selected_os}: $target_script" >&2
+  exit 1
 fi
 
-if ! grep -Fxq 'eval "$(starship init zsh)"' "$HOME/.zshrc"; then
-  echo 'eval "$(starship init zsh)"' >> "$HOME/.zshrc"
-fi
-
-# Zinit
-if ! command -v zinit &>/dev/null; then
-  echo "Installing Zinit..."
-  bash -c "$(curl -fsSL https://raw.githubusercontent.com/zdharma-continuum/zinit/main/scripts/install.sh)" -- --unattended -y
-else
-  echo "Zinit already installed."
-fi
-
-# PMY
-if ! command -v pmy &>/dev/null; then
-    if ! command -v go &>/dev/null; then
-        echo "Error: Go not found in PATH. To install PMY, install Go first." >&2
-    fi
-    if [[ "$(uname -s)" == "Darwin" ]]; then
-        sudo env GOBIN=/usr/local/bin go install github.com/relastle/pmy@latest
-    else
-	sudo go install github.com/relastle/pmy@latest
-    fi
-fi
-
-
-is_ubuntu() {
-  [ -r /etc/os-release ] && grep -q '^ID=ubuntu' /etc/os-release
-}
-
-is_graphical_session() {
-  [ -n "$DISPLAY" ] || [ -n "$WAYLAND_DISPLAY" ]
-}
-
-if is_ubuntu && is_graphical_session; then
-  sudo apt update
-  sudo apt install -y i3 i3status i3lock dmenu dunst network-manager-gnome picom \
-      feh rofi xterm xclip wl-clipboard fzf ripgrep
-else
-    echo "Skipping i3 install..."
-fi
-
-exit 0
+echo "[dotfiles] Using ${selected_os} setup"
+exec "$target_script" "$@"

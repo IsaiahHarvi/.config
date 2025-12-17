@@ -14,6 +14,7 @@ export VISUAL="nvim"
 # bun (lame)
 export BUN_INSTALL="$HOME/.bun"
 export PATH="$BUN_INSTALL/bin:$PATH"
+export NVM_DIR="$HOME/.nvm"
 
 # docker
 export DOCKER_BUILDKIT=1
@@ -41,10 +42,15 @@ eval "$(pmy init)"
 # fzf
 export FZF_DEFAULT_OPTS='--height 40% --tmux bottom --layout reverse --border top'
 
-if [ -z "$SSH_AUTH_SOCK" ] ; then
-    eval `ssh-agent -s`
-    # ssh-add ~/.ssh/id_ed25519
-    # ssh-add ~/.ssh/id_rsa
+if [ -z "$SSH_AUTH_SOCK" ]; then
+   # Check for a currently running instance of the agent
+   RUNNING_AGENT="`ps -ax | grep 'ssh-agent -s' | grep -v grep | wc -l | tr -d '[:space:]'`"
+   if [ "$RUNNING_AGENT" = "0" ]; then
+        # Launch a new instance of the agent
+        ssh-agent -s &> $HOME/.ssh/ssh-agent
+   fi
+   eval `cat $HOME/.ssh/ssh-agent` > /dev/null
+   ssh-add 2> /dev/null
 fi
 
 # Tree
@@ -77,5 +83,6 @@ autoload -Uz compinit && compinit
 
 #### END OF VERSIONED CONFIG
 
-# export AWS_PROFILE=vd-admin
-# export AWS_REGION=us-east-1
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion

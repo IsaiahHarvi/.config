@@ -1,19 +1,25 @@
-# Personal Config for Various Dev Tools
+# Dotfiles
 
-<div style="display: flex; gap: 1px;">
-  <img src="https://img.shields.io/badge/Arch_Linux-1793D1?style=for-the-badge&logo=arch-linux&logoColor=white" />
-  <img src="https://img.shields.io/badge/Ubuntu-E95420?style=for-the-badge&logo=ubuntu&logoColor=white" />
-  <img src="https://img.shields.io/badge/VIM-%2311AB00.svg?&style=for-the-badge&logo=vim&logoColor=white" />
-  <img src="https://img.shields.io/badge/tmux-1BB91F?style=for-the-badge&logo=tmux&logoColor=white" />
-  <img src="https://img.shields.io/badge/Zsh-F15A24?style=for-the-badge&logo=Zsh&logoColor=white" />
-  <img src="https://img.shields.io/badge/wezterm-4E49EE?style=for-the-badge&logo=wezterm&logoColor=white" />
-  <img src="https://img.shields.io/badge/mac%20os-000000?style=for-the-badge&logo=apple&logoColor=white" />
-  <img src="https://img.shields.io/badge/NeoVim-%2357A143.svg?&style=for-the-badge&logo=neovim&logoColor=white" />
-</div>
-<br>
+Opinionated configs for terminals, editors, and window managers across macOS and Linux.
+
+## Quickstart
 
 ```bash
-git clone git@github.com:IsaiahHarvi/.config.git ~/.config --force
-sudo chmod +x ~/.config/setup.sh
-bash ~/.config/setup.sh
+git clone git@github.com:IsaiahHarvi/.config.git ~/.config
+cd ~/.config
+./setup.sh            # auto-detects macOS or Linux
+# DOTFILES_OS=linux ./setup.sh   # force a specific OS, useful in containers
 ```
+
+## What the setup does
+
+- Symlinks configs from the repo into `~/.config` and key dotfiles like `~/.zshrc`, `~/.vimrc`, and `~/.tmux.conf`.
+- Installs shared tooling: Vim Plug, Starship, Zinit, and pmy (if Go is available).
+- On Ubuntu, installs common CLI packages plus i3-related packages when a graphical session is detected.
+
+## Script layout
+
+- `setup.sh` – entrypoint that dispatches to the right OS script.
+- `scripts/setup-macos.sh` and `scripts/setup-linux.sh` – per-OS steps.
+- `scripts/common.sh` – helpers for linking and shared installs.
+- `macos/startup.sh` – optional macOS defaults; gated behind `APPLY_MACOS_DEFAULTS=1`.

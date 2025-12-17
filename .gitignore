@@ -1,6 +1,6 @@
 *
 
-!aerospce
+!aerospace
 !bash
 !kitty
 !macos
@@ -17,3 +17,5 @@
 !i3
 !README.md
 !treeignore
+!scripts
+!scripts/**
